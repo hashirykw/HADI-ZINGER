@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en" data-mood="flame">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
+<title>Hadi's Zinger & Fries — Karachi's Crispiest Zinger 🍔</title>
+<meta name="description" content="Hadi's Zinger & Fries — crispy zinger burgers, loaded fries, wings & more in Block H, North Nazimabad, Karachi. Open 7PM–1AM. Order now!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ DUAL-MOOD THEME TOKENS ============ */
+:root{
+  --font-display:'Bricolage Grotesque',system-ui,sans-serif;
+  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --radius:20px;
+  --safe-t:env(safe-area-inset-top,0px);
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-l:env(safe-area-inset-left,0px);
+  --safe-r:env(safe-area-inset-right,0px);
+  --sec-pad:96px;
+}
+
+/* MOOD 1 — FLAME (bold dark, fiery) */
+html[data-mood="flame"]{
+  --bg:#140b06; --bg-2:#1e1109; --surface:#241610; --surface-2:#2c1b12;
+  --text:#fdf4ec; --muted:#b79b8a; --border:rgba(253,244,236,.1);
+  --accent:#ff5722; --accent-2:#ff8a00; --accent-deep:#e03e00;
+  --hot:#ffb703; --pop:#ff2d55;
+  --hero-grad:radial-gradient(120% 120% at 70% 10%,#3a1b0d 0%,#1e1109 45%,#140b06 100%);
+  --card:rgba(253,244,236,.04); --card-brd:rgba(253,244,236,.1);
+  --nav-bg:rgba(20,11,6,.72); --nav-brd:rgba(253,244,236,.12);
+  --shadow:0 20px 50px -18px rgba(0,0,0,.6);
+  --ink-on-accent:#fff;
+}
+/* MOOD 2 — FRESH (bright cream, sunny) */
+html[data-mood="fresh"]{
+  --bg:#fff8ec; --bg-2:#fff1d6; --surface:#ffffff; --surface-2:#fffaf0;
+  --text:#231810; --muted:#7c6a58; --border:rgba(35,24,16,.1);
+  --accent:#ff5722; --accent-2:#ff9e00; --accent-deep:#e8420a;
+  --hot:#f4a300; --pop:#e63958;
+  --hero-grad:radial-gradient(120% 120% at 70% 10%,#ffe6a8 0%,#fff1d6 45%,#fff8ec 100%);
+  --card:#ffffff; --card-brd:rgba(35,24,16,.08);
+  --nav-bg:rgba(255,248,236,.8); --nav-brd:rgba(35,24,16,.1);
+  --shadow:0 20px 50px -20px rgba(180,90,20,.28);
+  --ink-on-accent:#fff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.55;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;transition:background .5s ease,color .5s ease}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+.serif{font-family:var(--font-display)}
+.eyebrow{font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+section{position:relative}
+@media(max-width:1024px){:root{--sec-pad:76px}}
+@media(max-width:640px){:root{--sec-pad:58px}}
+
+/* ============ PRELOADER ============ */
+#pre{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--hero-grad);
+  transition:opacity .6s,visibility .6s}
+#pre.done{opacity:0;visibility:hidden}
+.pre-in{display:flex;flex-direction:column;align-items:center;gap:24px}
+.pre-logo{font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--text);letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.pre-logo b{color:var(--accent)}
+.pre-burger{font-size:2.6rem;animation:sizzle 1s ease-in-out infinite}
+@keyframes sizzle{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
+.pre-bar{width:160px;height:4px;border-radius:4px;background:var(--card-brd);overflow:hidden}
+.pre-bar i{display:block;height:100%;width:40%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2));animation:preload 1.1s ease-in-out infinite}
+@keyframes preload{0%{transform:translateX(-130%)}100%{transform:translateX(320%)}}
+@media(prefers-reduced-motion:reduce){.pre-burger,.pre-bar i{animation:none}}
+
+/* ============ NAV ============ */
+header{position:fixed;top:0;left:0;right:0;z-index:200;transition:transform .4s}
+.nav{padding:14px 0;padding-top:calc(14px + var(--safe-t));transition:.35s}
+.nav-in{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  width:min(1180px,94vw);margin-inline:auto;padding:9px 9px 9px 18px;border-radius:60px;
+  background:var(--nav-bg);backdrop-filter:blur(16px) saturate(1.5);border:1px solid var(--nav-brd);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.4);transition:.35s}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.15rem;letter-spacing:-.01em;flex-shrink:0}
+.brand .logo-em{font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+.brand b{color:var(--accent)}
+.brand .tag{display:block;font-family:var(--font-body);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:2px}
+
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{padding:9px 15px;border-radius:40px;font-weight:600;font-size:.92rem;color:var(--text);opacity:.82;transition:.2s}
+.nav-links a:hover{opacity:1;background:var(--card)}
+
+.nav-right{display:flex;align-items:center;gap:8px}
+/* mood toggle */
+.mood-toggle{display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:40px;
+  background:var(--card);border:1px solid var(--card-brd);font-weight:700;font-size:.8rem;color:var(--text);transition:.2s}
+.mood-toggle:hover{border-color:var(--accent)}
+.mood-toggle .mi{font-size:1rem;line-height:1}
+.mood-toggle .mlabel{white-space:nowrap}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-radius:40px;
+  padding:11px 20px;font-size:.92rem;transition:transform .2s,box-shadow .25s,filter .2s;white-space:nowrap}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:var(--ink-on-accent);
+  box-shadow:0 10px 26px -8px var(--accent)}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.btn-ghost{background:var(--card);border:1px solid var(--card-brd);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent)}
+.cart-btn{position:relative;padding:11px 15px;border-radius:40px;background:var(--card);border:1px solid var(--card-brd);font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:7px}
+.cart-count{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:20px;
+  background:var(--pop);color:#fff;font-size:.7rem;font-weight:800;display:grid;place-items:center;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.5,.5,1)}
+.cart-count.show{transform:scale(1)}
+
+.burger{display:none;flex-direction:column;gap:5px;padding:11px;border-radius:12px;background:var(--card);border:1px solid var(--card-brd)}
+.burger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+.burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============ MOBILE NAV DRAWER ============ */
+.drawer-bg{position:fixed;inset:0;z-index:210;background:rgba(0,0,0,.5);backdrop-filter:blur(3px);
+  opacity:0;visibility:hidden;transition:.35s}
+.drawer-bg.show{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(320px,86vw);z-index:220;
+  background:var(--bg-2);border-left:1px solid var(--border);
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;padding:calc(20px + var(--safe-t)) 22px calc(20px + var(--safe-b));
+  box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+.drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.drawer-head .brand{font-size:1.05rem}
+.drawer-close{width:40px;height:40px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1.1rem;transition:.2s}
+.drawer-close:active{transform:rotate(90deg)}
+.drawer-links{display:flex;flex-direction:column;gap:4px}
+.drawer-links a{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;font-weight:600;font-size:1.05rem;transition:.2s}
+.drawer-links a .di{font-size:1.2rem;width:24px;text-align:center}
+.drawer-links a:active{background:var(--card)}
+.drawer-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+.drawer-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.drawer-actions a{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px;border-radius:14px;font-weight:700;font-size:.9rem}
+.drawer .mood-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:var(--card);border:1px solid var(--card-brd)}
+.drawer .mood-row span{font-weight:700;font-size:.9rem}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;min-height:100vh;background:var(--hero-grad);display:flex;align-items:center;
+  position:relative;overflow:hidden;padding:calc(130px + var(--safe-t)) 0 70px;transition:background .5s}
+.hero-glow{position:absolute;width:60vw;height:60vw;max-width:600px;max-height:600px;border-radius:50%;
+  background:radial-gradient(circle,var(--accent),transparent 68%);opacity:.28;top:-10%;right:-8%;filter:blur(30px);pointer-events:none}
+.hero-in{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.7rem,7vw,5rem);line-height:.98;letter-spacing:-.02em;margin:16px 0 12px}
+.hero h1 .flame{color:var(--accent);position:relative;display:inline-block}
+.hero-sub{color:var(--muted);font-size:1.1rem;max-width:42ch;margin-bottom:8px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+.hbadge{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:40px;background:var(--card);border:1px solid var(--card-brd);font-size:.85rem;font-weight:600}
+.hbadge b{color:var(--accent)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-visual{position:relative;height:min(520px,58vh)}
+.hero-burger{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(11rem,34vw,20rem);
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.4));animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-18px) rotate(3deg)}}
+.hero-chip{position:absolute;z-index:4;background:var(--surface);border:1px solid var(--card-brd);
+  border-radius:16px;padding:11px 15px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-weight:700}
+.hero-chip .big{font-family:var(--font-display);font-size:1.3rem;color:var(--accent);line-height:1}
+.hero-chip small{color:var(--muted);font-size:.72rem;font-weight:600;display:block}
+.hero-chip.c1{top:6%;left:-2%}
+.hero-chip.c2{bottom:10%;right:-3%}
+.hero-chip.c3{bottom:38%;left:-6%}
+.spark{position:absolute;font-size:1.6rem;animation:spin 6s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.wave{position:absolute;bottom:-1px;left:0;width:100%;line-height:0;z-index:2}
+.wave svg{width:100%;height:60px;display:block;fill:var(--bg)}
+
+/* MARQUEE */
+.marquee{background:var(--accent);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:3}
+.marquee-t{display:inline-flex;gap:34px;animation:slide 20s linear infinite;font-family:var(--font-display);font-weight:700;font-size:1.05rem}
+.marquee-t span{display:inline-flex;align-items:center;gap:34px}
+.marquee-t span::after{content:"🍔"}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-t,.hero-burger,.spark{animation:none}}
+
+/* ============ SHARED SECTION ============ */
+.sec{padding:var(--sec-pad) 0}
+.sec-head{max-width:640px;margin-bottom:46px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head h2{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.04;letter-spacing:-.02em;margin:12px 0 12px}
+.sec-head p{color:var(--muted);font-size:1.06rem}
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*70ms)}
+[data-reveal].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important;transition:none}}
+
+/* ============ MENU ============ */
+.menu-sec{background:var(--bg)}
+.cats{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.cat{padding:10px 20px;border-radius:40px;background:var(--card);border:1px solid var(--card-brd);font-weight:700;font-size:.9rem;color:var(--text);transition:.22s}
+.cat.active{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:var(--ink-on-accent);border-color:transparent}
+.cat:hover:not(.active){border-color:var(--accent)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.dish{background:var(--card);border:1px solid var(--card-brd);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s;box-shadow:0 6px 20px -14px rgba(0,0,0,.4)}
+.dish:hover{transform:translateY(-5px);border-color:var(--accent)}
+.dish-top{height:150px;position:relative;display:grid;place-items:center;font-size:4.5rem;
+  background:radial-gradient(circle at 50% 40%,var(--surface-2),var(--surface));overflow:hidden}
+.dish-top .emj{transition:transform .5s}
+.dish:hover .dish-top .emj{transform:scale(1.15) rotate(6deg)}
+.dish-tag{position:absolute;top:10px;left:10px;background:var(--pop);color:#fff;font-size:.66rem;font-weight:800;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
+.dish-body{padding:16px;display:flex;flex-direction:column;gap:7px;flex:1}
+.dish-body h4{font-family:var(--font-display);font-weight:700;font-size:1.14rem;line-height:1.15}
+.dish-body .desc{font-size:.82rem;color:var(--muted);flex:1}
+.dish-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.price{font-family:var(--font-display);font-weight:800;font-size:1.2rem;color:var(--accent)}
+.add-btn{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:var(--ink-on-accent);font-weight:800;padding:9px 15px;border-radius:30px;font-size:.85rem;display:flex;align-items:center;gap:6px;transition:.2s}
+.add-btn:hover{filter:brightness(1.06);transform:scale(1.04)}
+.add-btn:active{transform:scale(.93)}
+
+/* ============ DEALS ============ */
+.deals{background:var(--bg-2)}
+.deals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.deal{position:relative;border-radius:var(--radius);overflow:hidden;padding:26px;color:#fff;display:flex;flex-direction:column;gap:8px;min-height:210px;justify-content:flex-end;isolation:isolate}
+.deal::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,var(--accent),var(--accent-deep))}
+.deal.d2::before{background:linear-gradient(135deg,var(--hot),var(--accent-2))}
+.deal.d3::before{background:linear-gradient(135deg,var(--pop),var(--accent))}
+.deal .demj{position:absolute;top:14px;right:16px;font-size:3.4rem;opacity:.35;z-index:-1}
+.deal .dname{font-family:var(--font-display);font-weight:800;font-size:1.5rem;line-height:1}
+.deal .dprice{font-family:var(--font-display);font-weight:800;font-size:2.2rem;line-height:1}
+.deal .dprice small{font-size:.9rem;font-weight:600;opacity:.9;font-family:var(--font-body)}
+.deal .ddesc{font-size:.88rem;opacity:.92}
+.deal .add-btn{margin-top:8px;align-self:flex-start;background:#fff;color:var(--accent-deep)}
+
+/* ============ BENTO GALLERY ============ */
+.gallery{background:var(--bg)}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px}
+.bento .cell{border-radius:var(--radius);overflow:hidden;position:relative;background:var(--surface-2);display:grid;place-items:center;font-size:3.4rem;border:1px solid var(--card-brd)}
+.bento .feature{grid-column:span 2;grid-row:span 2;font-size:6rem}
+.bento .wide{grid-column:span 2}
+.bento .tall{grid-row:span 2}
+.bento .cell .lbl{position:absolute;bottom:0;left:0;right:0;padding:12px 14px;font-weight:700;font-size:.9rem;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);color:#fff}
+.bento .stat{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;flex-direction:column;font-size:1rem;gap:2px;text-align:center;padding:14px}
+.bento .stat .num{font-family:var(--font-display);font-weight:800;font-size:2.4rem;line-height:1}
+.bento .stat .slbl{font-size:.8rem;opacity:.9;font-weight:600}
+
+/* ============ REVIEWS ============ */
+.reviews{background:var(--bg-2)}
+.rev-top{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:38px}
+.rev-score{text-align:center;background:var(--card);border:1px solid var(--card-brd);border-radius:var(--radius);padding:20px 28px}
+.rev-score .n{font-family:var(--font-display);font-weight:800;font-size:3.4rem;color:var(--accent);line-height:1}
+.rev-score .s{color:var(--hot);letter-spacing:2px}
+.rev-score .c{color:var(--muted);font-size:.82rem;margin-top:4px}
+.rev-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev-card{background:var(--card);border:1px solid var(--card-brd);border-radius:var(--radius);padding:22px}
+.rev-card .s{color:var(--hot);margin-bottom:10px}
+.rev-card p{font-size:.94rem;color:var(--text);opacity:.92;margin-bottom:16px;line-height:1.6}
+.rev-who{display:flex;align-items:center;gap:11px}
+.rev-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--pop));display:grid;place-items:center;font-weight:800;color:#fff;font-family:var(--font-display)}
+.rev-who b{font-size:.9rem}
+.rev-who small{display:block;color:var(--muted);font-size:.75rem}
+
+/* ============ LOCATION ============ */
+.location{background:var(--bg)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+.loc-info{display:flex;flex-direction:column;gap:14px}
+.loc-item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--card-brd);border-radius:16px;padding:17px 19px}
+.loc-icon{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:grid;place-items:center;font-size:1.2rem}
+.loc-item h4{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin-bottom:2px}
+.loc-item p{color:var(--muted);font-size:.9rem}
+.loc-item a{color:var(--accent);font-weight:600}
+.map-embed{border-radius:var(--radius);overflow:hidden;min-height:340px;border:1px solid var(--card-brd);box-shadow:var(--shadow)}
+.map-embed iframe{width:100%;height:100%;min-height:340px;border:0}
+
+/* ============ ORDER FORM ============ */
+.order{background:linear-gradient(140deg,var(--bg-2),var(--bg))}
+.order-card{background:var(--card);border:1px solid var(--card-brd);border-radius:26px;padding:32px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:span 2}
+.field label{font-size:.82rem;font-weight:600;color:var(--text)}
+.field label .req{color:var(--accent)}
+.field input,.field select,.field textarea{background:var(--surface);border:1px solid var(--card-brd);border-radius:12px;padding:13px 15px;color:var(--text);font-family:inherit;font-size:.95rem;transition:.2s;width:100%}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted);opacity:.7}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.field.err input,.field.err select,.field.err textarea{border-color:var(--pop)}
+.err-msg{color:var(--pop);font-size:.75rem;display:none}
+.field.err .err-msg{display:block}
+.order-submit{grid-column:span 2;margin-top:6px;justify-content:center;padding:15px;font-size:1rem}
+.order-ok{grid-column:span 2;display:none;align-items:center;gap:12px;background:color-mix(in srgb,var(--accent) 14%,transparent);border:1px solid var(--accent);border-radius:14px;padding:16px}
+.order-ok.show{display:flex}
+.order-ok .tick{width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:900;flex-shrink:0}
+
+/* ============ CART DRAWER ============ */
+.ov-bg{position:fixed;inset:0;z-index:230;background:rgba(0,0,0,.5);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.35s}
+.ov-bg.show{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;top:0;right:0;height:100%;width:min(410px,100%);z-index:240;background:var(--bg-2);
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+.cart-drawer.open{transform:none}
+.cart-head{padding:calc(20px + var(--safe-t)) 22px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.cart-head h3{font-family:var(--font-display);font-weight:800;font-size:1.4rem;display:flex;gap:9px;align-items:center}
+.close-x{width:38px;height:38px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1.1rem;transition:.2s}
+.close-x:active{transform:rotate(90deg)}
+.cart-items{flex:1;overflow-y:auto;padding:16px 22px;display:flex;flex-direction:column;gap:12px;-webkit-overflow-scrolling:touch}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.cart-empty .em{font-size:3rem;margin-bottom:12px}
+.c-item{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--card-brd);border-radius:16px;padding:11px}
+.c-item .cemj{width:56px;height:56px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;font-size:1.8rem;flex-shrink:0}
+.c-item .ci-body{flex:1;min-width:0}
+.c-item h5{font-family:var(--font-display);font-weight:700;font-size:1rem;line-height:1.15}
+.c-item .ci-price{color:var(--accent);font-weight:800;font-size:.9rem;margin-top:2px}
+.ci-remove{color:var(--muted);font-size:.74rem;font-weight:600;text-decoration:underline;margin-top:3px}
+.qty{display:flex;align-items:center;background:var(--surface-2);border-radius:30px;padding:3px}
+.qty button{width:28px;height:28px;border-radius:50%;background:var(--surface);font-weight:800;color:var(--accent);display:grid;place-items:center;transition:.15s}
+.qty button:hover{background:var(--accent);color:#fff}
+.qty span{min-width:26px;text-align:center;font-weight:700;font-size:.9rem}
+.cart-foot{padding:20px 22px calc(20px + var(--safe-b));border-top:1px solid var(--border);background:var(--surface)}
+.cart-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.cart-total .lbl{color:var(--muted);font-weight:600}
+.cart-total .amt{font-family:var(--font-display);font-weight:800;font-size:1.7rem;color:var(--accent)}
+.cart-note{font-size:.75rem;color:var(--muted);margin-bottom:13px}
+.cart-foot .btn{width:100%;padding:15px;font-size:1rem}
+
+/* ============ CHECKOUT MODAL ============ */
+.modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px)}
+.modal-card{position:relative;background:var(--bg-2);border:1px solid var(--border);border-radius:24px;width:min(500px,100%);max-height:92vh;overflow-y:auto;padding:30px;box-shadow:var(--shadow);animation:pop .35s cubic-bezier(.2,1,.3,1)}
+@keyframes pop{from{transform:scale(.92) translateY(16px);opacity:0}}
+.modal-card h3{font-family:var(--font-display);font-weight:800;font-size:1.6rem;margin-bottom:3px}
+.modal-card .sub{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+.co-field{margin-bottom:14px}
+.co-field label{font-size:.82rem;font-weight:600;display:block;margin-bottom:6px}
+.co-field label .req{color:var(--accent)}
+.co-field input,.co-field select,.co-field textarea{width:100%;background:var(--surface);border:1px solid var(--card-brd);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:.95rem;color:var(--text);transition:.2s}
+.co-field input:focus,.co-field select:focus,.co-field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.co-field.err input,.co-field.err select,.co-field.err textarea{border-color:var(--pop)}
+.co-field .err-msg{color:var(--pop);font-size:.74rem;margin-top:4px;display:none}
+.co-field.err .err-msg{display:block}
+.co-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pay-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.pay-opt{border:1px solid var(--card-brd);border-radius:12px;padding:13px;text-align:center;font-weight:600;font-size:.88rem;background:var(--surface);transition:.2s}
+.pay-opt.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.co-summary{background:var(--surface);border:1px solid var(--card-brd);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.co-summary .row{display:flex;justify-content:space-between;font-size:.88rem;padding:4px 0}
+.co-summary .row.tot{border-top:1px dashed var(--card-brd);margin-top:6px;padding-top:10px;font-weight:800;font-family:var(--font-display);font-size:1.05rem;color:var(--accent)}
+.modal-card .btn{width:100%;padding:15px;font-size:1rem}
+.order-done{text-align:center;padding:16px 6px}
+.order-done .big-tick{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:grid;place-items:center;margin:0 auto 18px;font-size:2.4rem;animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+.order-done .oid{font-family:var(--font-display);font-weight:800;color:var(--accent);font-size:1.1rem;margin:12px 0}
+
+/* ============ CHATBOT ============ */
+.chat-fab{position:fixed;bottom:22px;right:22px;z-index:180;width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 12px 30px -8px var(--accent);
+  display:grid;place-items:center;font-size:1.7rem;transition:transform .3s;animation:fabp 2.6s infinite}
+.chat-fab:hover{transform:scale(1.08)}
+@keyframes fabp{0%,100%{box-shadow:0 12px 30px -8px var(--accent)}50%{box-shadow:0 12px 42px -4px var(--accent)}}
+.chat-fab .dot{position:absolute;top:2px;right:2px;width:15px;height:15px;background:var(--pop);border-radius:50%;border:2px solid var(--bg)}
+.chat-panel{position:fixed;bottom:22px;right:22px;z-index:190;width:min(370px,calc(100vw - 24px));height:min(560px,80vh);
+  background:var(--bg-2);border:1px solid var(--border);border-radius:24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;overflow:hidden;transform:translateY(20px) scale(.96);opacity:0;visibility:hidden;
+  transition:.34s cubic-bezier(.2,1,.3,1);transform-origin:bottom right}
+.chat-panel.open{transform:none;opacity:1;visibility:visible}
+.chat-top{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;padding:15px 18px;display:flex;align-items:center;gap:12px}
+.chat-top .cav{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:1.4rem}
+.chat-top b{font-family:var(--font-display);font-weight:700;font-size:1.05rem}
+.chat-top small{opacity:.9;font-size:.75rem;display:flex;align-items:center;gap:5px}
+.chat-top small::before{content:"";width:7px;height:7px;background:#4ade80;border-radius:50%}
+.chat-top .close-x{margin-left:auto;background:rgba(255,255,255,.18);color:#fff}
+.chat-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:11px;-webkit-overflow-scrolling:touch}
+.msg{max-width:82%;padding:11px 15px;border-radius:16px;font-size:.9rem;line-height:1.5;animation:msgin .3s ease}
+@keyframes msgin{from{opacity:0;transform:translateY(8px)}}
+.msg.bot{background:var(--card);border:1px solid var(--card-brd);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.user{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.msg.bot b{color:var(--accent)}
+.chat-typing{align-self:flex-start;background:var(--card);border:1px solid var(--card-brd);padding:13px 16px;border-radius:16px;border-bottom-left-radius:4px;display:none;gap:4px}
+.chat-typing.show{display:flex}
+.chat-typing i{width:7px;height:7px;background:var(--muted);border-radius:50%;animation:blink 1.2s infinite}
+.chat-typing i:nth-child(2){animation-delay:.2s}.chat-typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.chat-quick{padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border);background:var(--surface)}
+.chat-quick button{background:var(--card);border:1px solid var(--card-brd);color:var(--accent);font-size:.78rem;font-weight:700;padding:7px 12px;border-radius:20px;transition:.2s}
+.chat-quick button:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chat-input{display:flex;gap:8px;padding:12px 14px;background:var(--surface);border-top:1px solid var(--border)}
+.chat-input input{flex:1;border:1px solid var(--card-brd);border-radius:30px;padding:11px 16px;font-family:inherit;font-size:.9rem;background:var(--bg);color:var(--text)}
+.chat-input input:focus{outline:none;border-color:var(--accent)}
+.chat-input button{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;display:grid;place-items:center;flex-shrink:0;font-size:1.1rem;transition:.2s}
+.chat-input button:hover{transform:scale(1.05)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--bg-2);border-top:1px solid var(--border);padding:56px 0 30px}
+.foot-cta{display:none}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px;margin-bottom:38px}
+.foot-brand .fb-logo{font-family:var(--font-display);font-weight:800;font-size:1.5rem;display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.foot-brand .fb-logo b{color:var(--accent)}
+.foot-brand p{color:var(--muted);font-size:.9rem;max-width:34ch}
+.foot-socials{display:flex;gap:10px;margin-top:16px}
+.foot-socials a{width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid var(--card-brd);display:grid;place-items:center;font-size:1.1rem;transition:.25s}
+.foot-socials a:hover{background:var(--accent);color:#fff;transform:translateY(-3px)}
+.foot-col h5{font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--accent);margin-bottom:15px}
+.foot-col a,.foot-col p{display:block;color:var(--muted);font-size:.9rem;margin-bottom:10px;transition:.2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bot{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.82rem;color:var(--muted)}
+.fcta-btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:15px;font-weight:700;font-size:.92rem;transition:transform .18s}
+.fcta-btn:active{transform:scale(.96)}
+.fcta-btn.call{background:var(--card);border:1px solid var(--card-brd);color:var(--text)}
+.fcta-btn.wa{background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);color:#25d366}
+.fcta-btn.dir{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;box-shadow:0 8px 20px -8px var(--accent)}
+
+/* ============ MOBILE BAR ============ */
+.mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:170;display:none;padding:10px 14px calc(10px + var(--safe-b));
+  background:linear-gradient(to top,var(--bg) 55%,transparent);pointer-events:none}
+.mbar-in{pointer-events:auto;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--card-brd);
+  border-radius:20px;padding:8px;box-shadow:0 14px 40px -12px rgba(0,0,0,.4)}
+.mb-icon{flex:0 0 auto;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:1.25rem;transition:transform .18s}
+.mb-icon:active{transform:scale(.92)}
+.mb-icon.call{background:var(--card);border:1px solid var(--card-brd)}
+.mb-icon.wa{background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);color:#25d366}
+.mb-order{flex:1;height:48px;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:.98rem;color:#fff;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 8px 20px -6px var(--accent);transition:transform .18s}
+.mb-order:active{transform:scale(.97)}
+
+/* ============ TOAST ============ */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);z-index:250;background:var(--surface);border:1px solid var(--card-brd);color:var(--text);padding:13px 22px;border-radius:40px;font-weight:600;font-size:.9rem;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.35s;display:flex;align-items:center;gap:9px}
+.toast.show{opacity:1;visibility:visible;transform:translateX(-50%)}
+.toast .ti{color:var(--accent)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:820px){
+  .field input,.field select,.field textarea,
+  .co-field input,.co-field select,.co-field textarea,
+  .chat-input input{font-size:16px}
+}
+@media(max-width:1024px){
+  .deals-grid{grid-template-columns:1fr}
+  .rev-cards{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .foot-brand{grid-column:span 2}
+}
+@media(max-width:980px){
+  .hero-in{grid-template-columns:1fr;gap:26px}
+  .hero-visual{height:min(42vh,320px);order:-1}
+  .hero-burger{font-size:clamp(9rem,40vw,15rem)}
+  .loc-grid,.form-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .bento .feature{grid-column:span 2;font-size:4.5rem}
+}
+@media(max-width:640px){
+  .nav{padding:10px 0;padding-top:calc(10px + var(--safe-t))}
+  .nav-in{padding:8px 8px 8px 14px}
+  .brand{font-size:1rem}
+  .nav-links,.nav-right .mood-toggle,.nav-right .btn-primary{display:none}
+  .burger{display:flex}
+  .mobile-bar{display:block}
+  body{padding-bottom:calc(78px + var(--safe-b))}
+  .chat-fab{bottom:calc(82px + var(--safe-b));right:calc(16px + var(--safe-r));width:56px;height:56px}
+  .chat-panel{bottom:0;right:0;left:0;top:auto;width:100%;height:min(88svh,88vh);border-radius:26px 26px 0 0;padding-bottom:var(--safe-b)}
+  .toast{bottom:150px}
+
+  .hero-actions .btn{flex:1 1 auto}
+  .hero-chip.c3{display:none}
+  .sec-head{margin-bottom:36px}
+  .cats{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:6px;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cat{flex:0 0 auto;white-space:nowrap}
+  .menu-grid{grid-template-columns:1fr}
+  .dish{flex-direction:row}
+  .dish-top{width:110px;height:auto;font-size:3rem;flex-shrink:0}
+  .dish-body{padding:13px 14px}
+  .dish-body .desc{-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+  .deals-grid{grid-template-columns:1fr}
+  .bento{grid-auto-rows:120px;gap:10px}
+  .rev-top{justify-content:center}
+  .order-card{padding:22px 18px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full,.order-submit,.order-ok{grid-column:span 1}
+  .co-row{grid-template-columns:1fr}
+  .modal{padding:0;align-items:flex-end}
+  .modal-card{width:100%;max-height:92svh;max-height:92vh;border-radius:26px 26px 0 0;padding:26px 20px calc(26px + var(--safe-b));animation:sheet .38s cubic-bezier(.2,1,.3,1)}
+
+  /* footer mobile */
+  footer{padding:44px 0 26px}
+  .foot-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:30px}
+  .foot-cta .fcta-btn.dir{grid-column:span 2}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:26px 20px;margin-bottom:30px}
+  .foot-brand{grid-column:span 2;text-align:center;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .foot-brand .fb-logo{justify-content:center}
+  .foot-brand p{margin-inline:auto}
+  .foot-socials{justify-content:center}
+  .foot-bot{flex-direction:column;text-align:center;gap:6px;padding-bottom:calc(20px + var(--safe-b))}
+}
+@keyframes sheet{from{transform:translateY(40px);opacity:0}}
+@media(max-width:380px){
+  .hero h1{font-size:2.3rem}
+  .sec-head h2{font-size:1.7rem}
+  .dish-top{width:96px}
+  .foot-grid{grid-template-columns:1fr;text-align:center}
+}
+@media(max-height:520px) and (orientation:landscape){
+  .hero{min-height:auto;padding:calc(90px + var(--safe-t)) 0 40px}
+  .hero-visual{height:60vh}
+  .chat-panel{height:96vh}
+}
+@media(hover:none){
+  .btn:hover,.add-btn:hover,.dish:hover{transform:none}
+  .dish:active{transform:scale(.99)}
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="pre">
+  <div class="pre-in">
+    <div class="pre-burger">🍔</div>
+    <div class="pre-logo">Hadi's <b>Zinger</b></div>
+    <div class="pre-bar"><i></i></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="hdr">
+  <nav class="nav">
+    <div class="nav-in">
+      <a href="#home" class="brand">
+        <span class="logo-em">🍔</span>
+        <span>Hadi's <b>Zinger</b><span class="tag">& Fries · Karachi</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#deals">Deals</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#location">Find Us</a>
+      </div>
+      <div class="nav-right">
+        <button class="mood-toggle" onclick="toggleMood()" aria-label="Switch theme">
+          <span class="mi" id="moodIcon">🔥</span><span class="mlabel" id="moodLabel">Flame</span>
+        </button>
+        <button class="cart-btn" onclick="openCart()">🛒<span class="cart-count" id="cartCount">0</span></button>
+        <a href="#order" class="btn btn-primary">Order Now</a>
+        <button class="burger" onclick="openDrawer()" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-bg" id="drawerBg" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="brand"><span class="logo-em">🍔</span> Hadi's <b>Zinger</b></span>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <nav class="drawer-links">
+    <a href="#menu" onclick="closeDrawer()"><span class="di">🍔</span> Menu</a>
+    <a href="#deals" onclick="closeDrawer()"><span class="di">🔥</span> Deals</a>
+    <a href="#gallery" onclick="closeDrawer()"><span class="di">📸</span> Gallery</a>
+    <a href="#reviews" onclick="closeDrawer()"><span class="di">⭐</span> Reviews</a>
+    <a href="#location" onclick="closeDrawer()"><span class="di">📍</span> Find Us</a>
+    <a href="#order" onclick="closeDrawer()"><span class="di">🛵</span> Order Online</a>
+  </nav>
+  <div class="drawer-foot">
+    <div class="mood-row">
+      <span>Theme</span>
+      <button class="mood-toggle" onclick="toggleMood()">
+        <span class="mi" id="moodIcon2">🔥</span><span id="moodLabel2">Flame</span>
+      </button>
+    </div>
+    <div class="drawer-actions">
+      <a href="tel:03313643198" class="fcta-btn call">📞 Call</a>
+      <a href="https://wa.me/923313643198" target="_blank" rel="noopener" class="fcta-btn wa">💬 WhatsApp</a>
+    </div>
+    <a href="#order" onclick="closeDrawer()" class="btn btn-primary" style="justify-content:center">🛵 Order Now</a>
+  </div>
+</aside>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="eyebrow">Block H · North Nazimabad · Karachi</span>
+      <h1>Karachi's crispiest <span class="flame">Zinger.</span></h1>
+      <p class="hero-sub">Juicy fried chicken, loaded fries and saucy wings — fried fresh to order and served till 1 AM. Big flavour, small price.</p>
+      <div class="hero-badges">
+        <span class="hbadge">⭐ <b>4.1</b> · 28 reviews</span>
+        <span class="hbadge">🕒 Open till <b>1 AM</b></span>
+        <span class="hbadge">🔥 Fried Fresh</span>
+        <span class="hbadge">🛵 Home Delivery</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">🍔 See the Menu</a>
+        <a href="#order" class="btn btn-ghost">🛵 Order Online</a>
+        <a href="tel:03313643198" class="btn btn-ghost">📞 0331 3643198</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <span class="spark" style="top:8%;right:14%">✨</span>
+      <span class="spark" style="bottom:18%;left:10%;animation-duration:8s">🌶️</span>
+      <div class="hero-chip c1"><div><div class="big">Rs.120</div><small>Zinger Burger</small></div></div>
+      <div class="hero-burger">🍔</div>
+      <div class="hero-chip c2"><div><div class="big">Rs.150</div><small>Zinger + Fries</small></div></div>
+      <div class="hero-chip c3"><div>🧀<small>Extra Cheese</small></div></div>
+    </div>
+  </div>
+  <div class="wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,60 480,5 720,25 C960,45 1200,55 1440,28 L1440,60 L0,60 Z"/></svg></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-t">
+    <span>Zinger Burgers</span><span>Loaded Fries</span><span>Saucy Wings</span><span>Cheese Overload</span><span>Open till 1 AM</span><span>Fried Fresh Daily</span>
+    <span>Zinger Burgers</span><span>Loaded Fries</span><span>Saucy Wings</span><span>Cheese Overload</span><span>Open till 1 AM</span><span>Fried Fresh Daily</span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="sec menu-sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">The Menu</span>
+      <h2>Fried fresh, stacked high 🍔</h2>
+      <p>Everything made to order. Tap a category, add to cart, and check out in seconds.</p>
+    </div>
+    <div class="cats" id="cats" data-reveal></div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- DEALS -->
+<section class="sec deals" id="deals">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">Value Deals</span>
+      <h2>More food, less money 🔥</h2>
+      <p>Combos built for sharing (or not — we don't judge).</p>
+    </div>
+    <div class="deals-grid">
+      <div class="deal d1" data-reveal>
+        <span class="demj">🍔</span>
+        <div class="dname">Single Snack Deal</div>
+        <div class="dprice">Rs.250 <small>/ deal</small></div>
+        <div class="ddesc">1 Zinger burger + regular fries + 1 drink.</div>
+        <button class="add-btn" onclick='addToCart({n:"Single Snack Deal",p:250,e:"🍔"})'>+ Add</button>
+      </div>
+      <div class="deal d2" data-reveal style="--i:1">
+        <span class="demj">🍟</span>
+        <div class="dname">Duo Combo</div>
+        <div class="dprice">Rs.480 <small>/ deal</small></div>
+        <div class="ddesc">2 Zinger burgers + loaded fries + 2 drinks.</div>
+        <button class="add-btn" onclick='addToCart({n:"Duo Combo",p:480,e:"🍟"})'>+ Add</button>
+      </div>
+      <div class="deal d3" data-reveal style="--i:2">
+        <span class="demj">🍗</span>
+        <div class="dname">Party Bucket</div>
+        <div class="dprice">Rs.1150 <small>/ deal</small></div>
+        <div class="ddesc">2 Zingers + 10 wings + big fries + 2 drinks.</div>
+        <button class="add-btn" onclick='addToCart({n:"Party Bucket",p:1150,e:"🍗"})'>+ Add</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">The Good Stuff</span>
+      <h2>Straight off the fryer</h2>
+    </div>
+    <div class="bento" data-reveal>
+      <div class="cell feature">🍔<span class="lbl">Signature Zinger</span></div>
+      <div class="cell stat"><span class="num">4.1★</span><span class="slbl">28 Google reviews</span></div>
+      <div class="cell">🍟<span class="lbl">Loaded Fries</span></div>
+      <div class="cell wide">🧀<span class="lbl">Cheese Overload</span></div>
+      <div class="cell stat"><span class="num">1AM</span><span class="slbl">Open late nightly</span></div>
+      <div class="cell">🍗<span class="lbl">Crispy Wings</span></div>
+      <div class="cell">🥤<span class="lbl">Ice-cold Drinks</span></div>
+      <div class="cell wide">🌶️<span class="lbl">Extra Spicy Option</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">Word on the Street</span>
+      <h2>Loved by the neighbourhood</h2>
+    </div>
+    <div class="rev-top" data-reveal>
+      <div class="rev-score">
+        <div class="n">4.1</div>
+        <div class="s">★★★★☆</div>
+        <div class="c">28 Google reviews</div>
+      </div>
+      <p style="flex:1;min-width:240px;color:var(--muted);font-size:1.05rem">
+        A North Nazimabad late-night favourite — famous for value zingers and crispy fries that keep Block H coming back.
+      </p>
+    </div>
+    <div class="rev-cards">
+      <div class="rev-card" data-reveal><div class="s">★★★★★</div><p>"Best budget zinger in the area, hands down. The fries with cheese are unreal and it's open when everything else is closed."</p><div class="rev-who"><div class="rev-av">FA</div><div><b>Faizan A.</b><small>Local Guide · 3 weeks ago</small></div></div></div>
+      <div class="rev-card" data-reveal style="--i:1"><div class="s">★★★★☆</div><p>"Go-to late night spot. Zinger is crispy, sauce is on point, and the delivery is quick. Great value for the price."</p><div class="rev-who"><div class="rev-av">HK</div><div><b>Hina K.</b><small>Google review · 1 month ago</small></div></div></div>
+      <div class="rev-card" data-reveal style="--i:2"><div class="s">★★★★★</div><p>"The party bucket is perfect for friends. Wings were juicy and the whole order came hot. Will order again for sure."</p><div class="rev-who"><div class="rev-av">MU</div><div><b>Usman M.</b><small>Google review · 2 weeks ago</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="sec location" id="location">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Find Us</span>
+      <h2>Block H, North Nazimabad 📍</h2>
+      <p>Located in Jasmine Heights — swing by or get it delivered hot to your door.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info" data-reveal>
+        <div class="loc-item"><div class="loc-icon">📍</div><div><h4>Address</h4><p>W3Q2+QJ9, Block H, North Nazimabad Town, Karachi (in Jasmine Heights)</p></div></div>
+        <div class="loc-item"><div class="loc-icon">📞</div><div><h4>Call / WhatsApp</h4><p><a href="tel:03313643198">0331 3643198</a></p></div></div>
+        <div class="loc-item"><div class="loc-icon">🕒</div><div><h4>Timings</h4><p>Open daily · 7:00 PM – 1:00 AM</p></div></div>
+        <div class="loc-item"><div class="loc-icon">💸</div><div><h4>Price</h4><p>Rs 1 – 1,000 per person · super pocket-friendly</p></div></div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Hadi+Zinger+Block+H+North+Nazimabad+Karachi" target="_blank" rel="noopener" class="btn btn-primary" style="justify-content:center">🧭 Get Directions</a>
+      </div>
+      <div class="map-embed" data-reveal style="--i:1">
+        <iframe title="Hadi's Zinger location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Block+H+North+Nazimabad+Town+Karachi&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="sec order" id="order">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">Order / Reserve</span>
+      <h2>Get it delivered 🛵</h2>
+      <p>Fill in your details and we'll call to confirm your order right away.</p>
+    </div>
+    <div class="order-card" data-reveal>
+      <form class="form-grid" id="orderForm" novalidate>
+        <div class="field"><label>Full Name <span class="req">*</span></label><input type="text" name="name" placeholder="Your name"><div class="err-msg">Please enter your name</div></div>
+        <div class="field"><label>Phone <span class="req">*</span></label><input type="tel" name="phone" placeholder="03XX XXXXXXX"><div class="err-msg">Enter a valid phone number</div></div>
+        <div class="field"><label>Order Type <span class="req">*</span></label><select name="otype"><option value="">Select</option><option>Home Delivery</option><option>Pickup</option><option>Dine-in Reservation</option></select><div class="err-msg">Select an option</div></div>
+        <div class="field"><label>People / Qty</label><select name="qty"><option>1–2</option><option>3–4</option><option>5–8</option><option>Big order (8+)</option></select></div>
+        <div class="field full" id="addrField"><label>Delivery Address <span class="req">*</span></label><input type="text" name="addr" placeholder="House #, street, block, area"><div class="err-msg">Address is required for delivery</div></div>
+        <div class="field full"><label>Notes</label><textarea name="notes" rows="2" placeholder="Extra spicy, no mayo, add cheese…"></textarea></div>
+        <button type="submit" class="btn btn-primary order-submit">🔥 Place Order</button>
+        <div class="order-ok" id="orderOk"><div class="tick">✓</div><div><b>Order received!</b><br><small style="color:var(--muted)">We'll call <span id="okPhone"></span> to confirm. Hang tight — food's on the way! 🛵</small></div></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-cta">
+      <a href="tel:03313643198" class="fcta-btn call">📞 Call</a>
+      <a href="https://wa.me/923313643198" target="_blank" rel="noopener" class="fcta-btn wa">💬 WhatsApp</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Hadi+Zinger+Block+H+North+Nazimabad+Karachi" target="_blank" rel="noopener" class="fcta-btn dir">📍 Get Directions</a>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fb-logo"><span>🍔</span> Hadi's <b>Zinger</b></div>
+        <p>Karachi's crispiest zinger burgers, loaded fries & saucy wings — fried fresh in Block H, North Nazimabad.</p>
+        <div class="foot-socials">
+          <a href="https://instagram.com/hadi-zinger" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a href="tel:03313643198" aria-label="Call">📞</a>
+          <a href="https://wa.me/923313643198" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hadi+Zinger+Block+H+North+Nazimabad" target="_blank" rel="noopener" aria-label="Map">📍</a>
+        </div>
+      </div>
+      <div class="foot-col"><h5>Menu</h5><a href="#menu">Burgers</a><a href="#menu">Fries</a><a href="#menu">Wings</a><a href="#deals">Deals</a></div>
+      <div class="foot-col"><h5>Quick Links</h5><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#order">Order Online</a><a href="#location">Find Us</a></div>
+      <div class="foot-col"><h5>Hours</h5><p>Open Daily</p><p>7:00 PM – 1:00 AM</p><p>Block H, N. Nazimabad</p></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Hadi's Zinger & Fries. All rights reserved.</span>
+      <span>Block H, North Nazimabad Town, Karachi · 0331 3643198</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="ov-bg" id="ovBg" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>🛒 Your Order</h3>
+    <button class="close-x" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-total"><span class="lbl">Total</span><span class="amt" id="cartTotal">Rs.0</span></div>
+    <div class="cart-note">Delivery & taxes calculated at checkout.</div>
+    <button class="btn btn-primary" onclick="openCheckout()">Checkout →</button>
+  </div>
+</aside>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-bg" onclick="closeCheckout()"></div>
+  <div class="modal-card" id="checkoutCard">
+    <h3>Checkout</h3>
+    <p class="sub">Fill in your details — fields marked * are required.</p>
+    <form id="checkoutForm" novalidate>
+      <div class="co-field"><label>Full Name <span class="req">*</span></label><input type="text" name="cname" placeholder="Your name"><div class="err-msg">Name is required</div></div>
+      <div class="co-row">
+        <div class="co-field"><label>Phone <span class="req">*</span></label><input type="tel" name="cphone" placeholder="03XX XXXXXXX"><div class="err-msg">Valid phone required</div></div>
+        <div class="co-field"><label>Order Type <span class="req">*</span></label><select name="ctype"><option value="">Select</option><option>Delivery</option><option>Pickup</option></select><div class="err-msg">Select type</div></div>
+      </div>
+      <div class="co-field" id="coAddr"><label>Delivery Address <span class="req">*</span></label><textarea name="caddr" rows="2" placeholder="House #, street, block, area"></textarea><div class="err-msg">Address is required for delivery</div></div>
+      <div class="co-field"><label>Payment <span class="req">*</span></label>
+        <div class="pay-opts" id="payOpts">
+          <div class="pay-opt active" data-pay="Cash on Delivery">💵 Cash on Delivery</div>
+          <div class="pay-opt" data-pay="Card / Online">💳 Card / Online</div>
+        </div>
+      </div>
+      <div class="co-summary" id="coSummary"></div>
+      <button type="submit" class="btn btn-primary">Place Order 🎉</button>
+    </form>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()" aria-label="Chat">💬<span class="dot"></span></button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-top">
+    <div class="cav">🍔</div>
+    <div><b>Zinger Bot</b><small>Online now</small></div>
+    <button class="close-x" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-typing" id="chatTyping"><i></i><i></i><i></i></div>
+  <div class="chat-quick" id="chatQuick"></div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Ask about menu, timings, delivery…" onkeydown="if(event.key==='Enter')sendChat()">
+    <button onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<!-- MOBILE BAR -->
+<div class="mobile-bar">
+  <div class="mbar-in">
+    <a href="tel:03313643198" class="mb-icon call" aria-label="Call">📞</a>
+    <a href="https://wa.me/923313643198" target="_blank" rel="noopener" class="mb-icon wa" aria-label="WhatsApp">💬</a>
+    <a href="#order" class="mb-order">🛵 Order Now</a>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="ti">✓</span><span id="toastMsg">Added to cart</span></div>
+<script>
+/* ============ MENU DATA ============ */
+const MENU = {
+  "Burgers":[
+    {n:"Classic Zinger",d:"Crispy fried chicken fillet, lettuce & mayo",p:120,e:"🍔",tag:"Bestseller"},
+    {n:"Zinger with Cheese",d:"The classic + a melty cheese slice",p:170,e:"🧀"},
+    {n:"Double Zinger",d:"Two crispy fillets for the hungry",p:220,e:"🍔",tag:"Big"},
+    {n:"Spicy Fire Zinger",d:"Extra-hot sauce for the brave",p:150,e:"🌶️",tag:"Spicy"},
+  ],
+  "Fries":[
+    {n:"Regular Fries",d:"Golden, crispy, perfectly salted",p:80,e:"🍟"},
+    {n:"Loaded Cheese Fries",d:"Fries drowned in cheese sauce",p:180,e:"🧀",tag:"Popular"},
+    {n:"Masala Fries",d:"Tossed in our secret spice mix",p:120,e:"🌶️"},
+    {n:"Pizza Fries",d:"Fries topped with cheese & sauce",p:220,e:"🍕"},
+  ],
+  "Wings & Sides":[
+    {n:"Hot Wings (6pc)",d:"Crispy wings in fiery sauce",p:280,e:"🍗",tag:"Spicy"},
+    {n:"Wings Bucket (10pc)",d:"Ten saucy wings to share",p:450,e:"🍗"},
+    {n:"Nuggets (8pc)",d:"Golden chicken nuggets + dip",p:250,e:"🍤"},
+    {n:"Coleslaw",d:"Creamy, fresh & cooling",p:90,e:"🥗"},
+  ],
+  "Drinks":[
+    {n:"Soft Drink",d:"Ice-cold can of your choice",p:70,e:"🥤"},
+    {n:"Fresh Lime",d:"Zesty and refreshing",p:120,e:"🍋"},
+    {n:"Chocolate Shake",d:"Thick, creamy & rich",p:220,e:"🥤",tag:"Yum"},
+    {n:"Mineral Water",d:"500ml bottle",p:50,e:"💧"},
+  ],
+};
+
+/* ============ MOOD SWITCH ============ */
+const MOODS={flame:{icon:"🔥",label:"Flame"},fresh:{icon:"☀️",label:"Fresh"}};
+function applyMoodUI(m){
+  const info=MOODS[m];
+  ["moodIcon","moodIcon2"].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=info.icon;});
+  ["moodLabel","moodLabel2"].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=info.label;});
+}
+function toggleMood(){
+  const cur=document.documentElement.getAttribute('data-mood');
+  const next=cur==='flame'?'fresh':'flame';
+  document.documentElement.setAttribute('data-mood',next);
+  applyMoodUI(next);
+  showToast(next==='fresh'?'Fresh mode ☀️':'Flame mode 🔥');
+}
+
+/* ============ MENU RENDER ============ */
+let activeCat=Object.keys(MENU)[0];
+function renderCats(){
+  document.getElementById('cats').innerHTML=Object.keys(MENU).map(c=>
+    `<button class="cat ${c===activeCat?'active':''}" onclick="setCat('${c.replace(/'/g,"\\'")}')">${c}</button>`).join('');
+}
+function setCat(c){activeCat=c;renderCats();renderMenu();}
+function renderMenu(){
+  document.getElementById('menuGrid').innerHTML=MENU[activeCat].map((d,i)=>`
+    <div class="dish" style="--i:${i}" data-reveal>
+      <div class="dish-top">${d.tag?`<span class="dish-tag">${d.tag}</span>`:''}<span class="emj">${d.e}</span></div>
+      <div class="dish-body">
+        <h4>${d.n}</h4><p class="desc">${d.d}</p>
+        <div class="dish-foot"><span class="price">Rs.${d.p}</span>
+          <button class="add-btn" onclick='addToCart(${JSON.stringify(d).replace(/'/g,"&#39;")})'>+ Add</button>
+        </div>
+      </div>
+    </div>`).join('');
+  observeReveals();
+}
+
+/* ============ CART ============ */
+let cart=[];
+function addToCart(d){
+  const ex=cart.find(i=>i.n===d.n);
+  if(ex)ex.q++;else cart.push({...d,q:1});
+  updateCart();showToast(`${d.n} added 🛒`);
+  const cc=document.getElementById('cartCount');cc.classList.remove('show');void cc.offsetWidth;cc.classList.add('show');
+}
+function changeQty(n,delta){const it=cart.find(i=>i.n===n);if(!it)return;it.q+=delta;if(it.q<=0)cart=cart.filter(i=>i.n!==n);updateCart();}
+function removeItem(n){cart=cart.filter(i=>i.n!==n);updateCart();}
+function cartTotal(){return cart.reduce((s,i)=>s+i.p*i.q,0);}
+function updateCart(){
+  const count=cart.reduce((s,i)=>s+i.q,0);
+  const cc=document.getElementById('cartCount');cc.textContent=count;cc.classList.toggle('show',count>0);
+  const items=document.getElementById('cartItems'),foot=document.getElementById('cartFoot');
+  if(!cart.length){items.innerHTML=`<div class="cart-empty"><div class="em">🍔</div><p>Your cart is empty.<br>Add something tasty!</p></div>`;foot.style.display='none';return;}
+  foot.style.display='block';
+  items.innerHTML=cart.map(i=>`
+    <div class="c-item">
+      <div class="cemj">${i.e||'🍔'}</div>
+      <div class="ci-body"><h5>${i.n}</h5><div class="ci-price">Rs.${i.p} × ${i.q} = Rs.${i.p*i.q}</div>
+        <div class="ci-remove" onclick="removeItem('${i.n.replace(/'/g,"\\'")}')">Remove</div></div>
+      <div class="qty"><button onclick="changeQty('${i.n.replace(/'/g,"\\'")}',-1)">−</button><span>${i.q}</span><button onclick="changeQty('${i.n.replace(/'/g,"\\'")}',1)">+</button></div>
+    </div>`).join('');
+  document.getElementById('cartTotal').textContent='Rs.'+cartTotal().toLocaleString();
+}
+function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('ovBg').classList.add('show');}
+function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('ovBg').classList.remove('show');}
+
+/* ============ CHECKOUT ============ */
+let payMethod="Cash on Delivery";
+function openCheckout(){if(!cart.length){showToast('Your cart is empty');return;}closeCart();renderSummary();document.getElementById('checkoutModal').classList.add('show');}
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('show');}
+function renderSummary(){
+  const sub=cartTotal();const isDel=document.querySelector('[name=ctype]')?.value!=='Pickup';
+  const delivery=isDel?60:0;
+  document.getElementById('coSummary').innerHTML=`
+    ${cart.map(i=>`<div class="row"><span>${i.n} × ${i.q}</span><span>Rs.${i.p*i.q}</span></div>`).join('')}
+    <div class="row"><span>Delivery</span><span>Rs.${delivery}</span></div>
+    <div class="row tot"><span>Total</span><span>Rs.${(sub+delivery).toLocaleString()}</span></div>`;
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('.pay-opt')){document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('active'));const o=e.target.closest('.pay-opt');o.classList.add('active');payMethod=o.dataset.pay;}
+});
+document.addEventListener('change',e=>{
+  if(e.target.name==='ctype'){document.getElementById('coAddr').style.display=e.target.value==='Pickup'?'none':'block';renderSummary();}
+  if(e.target.name==='otype'){const del=e.target.value==='Home Delivery';document.getElementById('addrField').style.display=del?'flex':(e.target.value?'none':'flex');}
+});
+document.getElementById('checkoutForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target;let ok=true;
+  const chk=(n,c)=>{const fl=f.querySelector(`[name=${n}]`).closest('.co-field');fl.classList.toggle('err',!c);if(!c)ok=false;};
+  chk('cname',f.cname.value.trim().length>1);
+  chk('cphone',/^[0-9+\-\s]{10,}$/.test(f.cphone.value.trim()));
+  chk('ctype',f.ctype.value!=='');
+  const isDel=f.ctype.value==='Delivery';const af=document.getElementById('coAddr');
+  if(isDel){af.classList.toggle('err',f.caddr.value.trim().length<5);if(f.caddr.value.trim().length<5)ok=false;}else af.classList.remove('err');
+  if(!ok)return;
+  const oid='HZ-'+Math.floor(100000+Math.random()*900000);const sub=cartTotal();const delivery=isDel?60:0;
+  document.getElementById('checkoutCard').innerHTML=`
+    <div class="order-done">
+      <div class="big-tick">🎉</div>
+      <h3>Order Placed!</h3>
+      <p class="sub">Thanks, ${f.cname.value.trim()}! Your order is confirmed.</p>
+      <div class="oid">Order #${oid}</div>
+      <div class="co-summary" style="text-align:left">
+        <div class="row"><span>Items</span><span>${cart.reduce((s,i)=>s+i.q,0)}</span></div>
+        <div class="row"><span>Payment</span><span>${payMethod}</span></div>
+        <div class="row tot"><span>Total</span><span>Rs.${(sub+delivery).toLocaleString()}</span></div>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);margin:14px 0">We'll call ${f.cphone.value.trim()} to confirm. ETA 30–40 mins 🛵</p>
+      <button class="btn btn-primary" onclick="location.reload()">Done</button>
+    </div>`;
+  cart=[];updateCart();
+});
+
+/* ============ ORDER FORM ============ */
+document.getElementById('orderForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target;let ok=true;
+  const chk=(n,c)=>{const fl=f.querySelector(`[name=${n}]`).closest('.field');fl.classList.toggle('err',!c);if(!c)ok=false;};
+  chk('name',f.name.value.trim().length>1);
+  chk('phone',/^[0-9+\-\s]{10,}$/.test(f.phone.value.trim()));
+  chk('otype',f.otype.value!=='');
+  const isDel=f.otype.value==='Home Delivery';const af=document.getElementById('addrField');
+  if(isDel){af.classList.toggle('err',f.addr.value.trim().length<5);if(f.addr.value.trim().length<5)ok=false;}else af.classList.remove('err');
+  if(!ok)return;
+  document.getElementById('okPhone').textContent=f.phone.value.trim();
+  const ok2=document.getElementById('orderOk');ok2.classList.add('show');
+  f.querySelectorAll('input,select,textarea').forEach(el=>el.disabled=true);
+  f.querySelector('.order-submit').style.display='none';
+  ok2.scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+/* ============ CHATBOT ============ */
+const KB=[
+  {k:['menu','food','burger','eat','order'],a:"We've got 🍔 Zinger burgers, 🍟 loaded fries, 🍗 wings & 🥤 drinks! Browse the Menu section and add to cart to order."},
+  {k:['zinger','price','how much','cost'],a:"Our classic <b>Zinger is just Rs.120</b>, Zinger + fries Rs.150, and with cheese Rs.170. Deals start at Rs.250! 🔥"},
+  {k:['deal','combo','offer','bucket'],a:"Check our Deals: <b>Single Snack Rs.250</b>, Duo Combo Rs.480, and the Party Bucket Rs.1150. 🍔🍟🍗"},
+  {k:['time','timing','open','close','hour','late'],a:"We're open <b>daily 7:00 PM – 1:00 AM</b> — perfect for late-night cravings! 🌙"},
+  {k:['location','address','where','find','block'],a:"📍 We're in <b>Block H, North Nazimabad Town</b>, Karachi (Jasmine Heights). Tap 'Get Directions' in the Find Us section!"},
+  {k:['deliver','delivery','home'],a:"Yes, we deliver! 🛵 Add items to your cart, hit Checkout, choose Delivery and enter your address."},
+  {k:['phone','call','contact','number','whatsapp'],a:"📞 Call or WhatsApp us at <b>0331 3643198</b> anytime we're open!"},
+  {k:['spicy','hot','sauce'],a:"Love the heat? 🌶️ Try our <b>Spicy Fire Zinger</b> or Hot Wings — extra sauce on request!"},
+  {k:['pay','cash','card','payment'],a:"We accept <b>Cash on Delivery</b> and Card/Online payment at checkout. 💳"},
+  {k:['veg','vegetarian','halal'],a:"All our chicken is <b>100% Halal</b>. We've got fries, coleslaw & drinks for lighter bites too! 🥗"},
+  {k:['theme','mood','dark','light','color'],a:"Like the look? 😎 Tap the <b>🔥 Flame / ☀️ Fresh</b> toggle in the menu to switch the whole vibe!"},
+  {k:['thank','thanks','shukriya'],a:"Anytime! 😋 Hungry? Add something to your cart and let's get you fed!"},
+  {k:['hi','hello','salam','hey','assalam'],a:"Assalam-o-Alaikum & welcome to Hadi's Zinger! 🍔 Ask me about the menu, deals, timings or delivery!"},
+];
+const QUICK=["Zinger price?","Timings?","Deals?","Delivery?"];
+let chatStarted=false;
+function toggleChat(){
+  const p=document.getElementById('chatPanel');const open=p.classList.toggle('open');
+  document.getElementById('chatFab').style.display=open?'none':'grid';
+  if(open&&!chatStarted){chatStarted=true;renderQuick();botSay("Assalam-o-Alaikum! 🍔 I'm <b>Zinger Bot</b>. Ask me about our menu, deals, timings or delivery!");}
+}
+function renderQuick(){document.getElementById('chatQuick').innerHTML=QUICK.map(q=>`<button onclick="quickAsk('${q}')">${q}</button>`).join('');}
+function quickAsk(q){document.getElementById('chatInput').value=q;sendChat();}
+function addMsg(t,w){const b=document.getElementById('chatBody');const m=document.createElement('div');m.className='msg '+w;m.innerHTML=t;b.appendChild(m);b.scrollTop=b.scrollHeight;}
+function botSay(t){addMsg(t,'bot');}
+function sendChat(){
+  const inp=document.getElementById('chatInput');const q=inp.value.trim();if(!q)return;
+  addMsg(q,'user');inp.value='';
+  const typing=document.getElementById('chatTyping');typing.classList.add('show');
+  document.getElementById('chatBody').appendChild(typing);document.getElementById('chatBody').scrollTop=1e9;
+  setTimeout(()=>{
+    typing.classList.remove('show');const ql=q.toLowerCase();let ans=null,best=0;
+    KB.forEach(it=>{const h=it.k.filter(k=>ql.includes(k)).length;if(h>best){best=h;ans=it.a;}});
+    botSay(ans||"Good question! Best to call us at <b>0331 3643198</b> for that. Meanwhile I can help with menu, deals, timings & delivery! 😊");
+  },700+Math.random()*400);
+}
+
+/* ============ DRAWER ============ */
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.getElementById('drawerBg').classList.add('show');document.querySelector('.burger').classList.add('x');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('drawerBg').classList.remove('show');document.querySelector('.burger').classList.remove('x');}
+
+/* ============ HELPERS ============ */
+let toastTimer;
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000);}
+let revealIO;
+function observeReveals(){if(!revealIO)revealIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revealIO.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('[data-reveal]:not(.in)').forEach(el=>revealIO.observe(el));}
+addEventListener('scroll',()=>{const h=document.getElementById('hdr');h.querySelector('.nav-in').style.boxShadow=scrollY>40?'0 12px 34px -12px rgba(0,0,0,.5)':'';});
+/* min-date not needed; set today for any date input */
+
+/* ============ PRELOADER ============ */
+(function(){
+  const pre=document.getElementById('pre');if(!pre)return;
+  document.documentElement.style.overflow='hidden';
+  const start=Date.now(),MIN=1000;
+  function hide(){const w=Math.max(0,MIN-(Date.now()-start));setTimeout(()=>{pre.classList.add('done');document.documentElement.style.overflow='';setTimeout(()=>pre.remove(),650);},w);}
+  if(document.readyState==='complete')hide();else addEventListener('load',hide);
+  setTimeout(()=>{if(document.body.contains(pre)){pre.classList.add('done');document.documentElement.style.overflow='';}},6000);
+})();
+
+/* ============ INIT ============ */
+applyMoodUI('flame');renderCats();renderMenu();updateCart();observeReveals();
+</script>
+</body>
+</html>
